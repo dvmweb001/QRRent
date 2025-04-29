@@ -102,18 +102,18 @@
             
             // Calculate deductions
             const halfClassFee = classFee / 2;
-            const onePercentDeduction = halfClassFee * 0.01;
-            const amountAfterFirstDeduction = classFee - onePercentDeduction;
+            const withholdingTax = halfClassFee * 0.01;
+            const amountAfterWithholdingTax = classFee - withholdingTax;
             
-            const fivePercentDeduction = amountAfterFirstDeduction * 0.05;
-            const finalAmount = amountAfterFirstDeduction - fivePercentDeduction;
+            const fivePercentDeduction = amountAfterWithholdingTax * 0.05;
+            const finalAmount = amountAfterWithholdingTax - fivePercentDeduction;
             
             // Display results
             document.getElementById('result').style.display = 'block';
             
             document.getElementById('resultsText').innerHTML = `
                 <p><strong>Original Class Fee:</strong> PHP ${classFee.toFixed(2)}</p>
-                <p><strong>1% of Half Class Fee Deduction:</strong> PHP ${onePercentDeduction.toFixed(2)}</p>
+                <p><strong>1% of Half Class Fee (Withholding Tax):</strong> PHP ${withholdingTax.toFixed(2)}</p>
                 <p><strong>5% Deduction (AUB Collection Fee + QR Rent):</strong> PHP ${fivePercentDeduction.toFixed(2)}</p>
                 <p><strong>Final Amount:</strong> PHP ${finalAmount.toFixed(2)}</p>
             `;
@@ -121,10 +121,10 @@
             document.getElementById('calculationSteps').innerHTML = `
                 <p><strong>Calculation Steps:</strong></p>
                 <p>1. Half of Class Fee: ${classFee.toFixed(2)} / 2 = PHP ${halfClassFee.toFixed(2)}</p>
-                <p>2. 1% of Half Class Fee: ${halfClassFee.toFixed(2)} × 1% = PHP ${onePercentDeduction.toFixed(2)}</p>
-                <p>3. Amount after 1st deduction: ${classFee.toFixed(2)} - ${onePercentDeduction.toFixed(2)} = PHP ${amountAfterFirstDeduction.toFixed(2)}</p>
-                <p>4. 5% Deduction: ${amountAfterFirstDeduction.toFixed(2)} × 5% = PHP ${fivePercentDeduction.toFixed(2)}</p>
-                <p>5. Final Amount: ${amountAfterFirstDeduction.toFixed(2)} - ${fivePercentDeduction.toFixed(2)} = PHP ${finalAmount.toFixed(2)}</p>
+                <p>2. 1% of Half Class Fee (Withholding Tax): ${halfClassFee.toFixed(2)} × 1% = PHP ${withholdingTax.toFixed(2)}</p>
+                <p>3. Amount after Withholding Tax: ${classFee.toFixed(2)} - ${withholdingTax.toFixed(2)} = PHP ${amountAfterWithholdingTax.toFixed(2)}</p>
+                <p>4. 5% Deduction: ${amountAfterWithholdingTax.toFixed(2)} × 5% = PHP ${fivePercentDeduction.toFixed(2)}</p>
+                <p>5. Final Amount: ${amountAfterWithholdingTax.toFixed(2)} - ${fivePercentDeduction.toFixed(2)} = PHP ${finalAmount.toFixed(2)}</p>
             `;
         }
     </script>
